@@ -1,4 +1,4 @@
-package com.example.checkersgroupproject;
+package checkers;
 
 import java.util.Scanner;
 

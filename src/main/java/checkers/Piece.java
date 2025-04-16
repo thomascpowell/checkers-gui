@@ -1,4 +1,5 @@
-package com.example.checkersgroupproject;
+package checkers;
+
 public class Piece {
 
   private Player player;
