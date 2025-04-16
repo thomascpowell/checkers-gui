@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example</groupId>
-  <artifactId>checkersGroupProject</artifactId>
+  <groupId>checkers</groupId>
+  <artifactId>checkers</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>checkersGroupProject</name>
+  <name>checkers</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,7 +76,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.example.checkersgroupproject/com.example.checkersgroupproject.CheckersApplication</mainClass>
+              <mainClass>checkers.CheckersApplication</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>

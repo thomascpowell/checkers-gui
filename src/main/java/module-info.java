@@ -1,4 +1,4 @@
-module com.example.checkersgroupproject {
+module checkers {
     requires javafx.controls;
     requires javafx.fxml;
 
@@ -6,6 +6,6 @@ module com.example.checkersgroupproject {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
 
-    opens com.example.checkersgroupproject to javafx.fxml;
-    exports com.example.checkersgroupproject;
+    opens checkers to javafx.fxml;
+    exports checkers;
 }
