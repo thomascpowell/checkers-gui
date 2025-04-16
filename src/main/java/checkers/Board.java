@@ -92,19 +92,19 @@ public class Board {
   // prints the board
   public String show() {
     // ANSI for clearing the terminal
-    String res = "\033\143\n";
+    String res = "";
     for (int y = 7; y >= 0; y--) {
-        res += String.format("%2d  ", y + 1);
+        res += String.format("%2d ", y + 1);
         for (int x = 0; x < 8; x++) {
-            String blank = ((x + y) % 2 == 0) ? ".  " : "   ";
+            String blank = ((x + y) % 2 == 0) ? ". " : "  ";
             Piece piece = grid[y][x];
-            res += piece == null ? blank : piece.icon()+"  ";
+            res += piece == null ? blank : piece.icon()+" ";
         }
         res += "\n";
     }
-    res += "   ";
+    res += "  ";
     for (int x = 1; x <= 8; x++) {
-        res += String.format("%2d ", x);
+        res += String.format("%2d", x);
     }
     return res;
   }

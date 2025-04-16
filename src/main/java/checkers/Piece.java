@@ -11,8 +11,12 @@ public class Piece {
   }
 
   public String icon() {
-    String color = (player == Player.RED) ? Utils.RED : Utils.BLUE;
-    return Utils.color(color, (isKing) ? "k" : "o");
+    int index = (player == Player.RED) ? 0 : 2;
+    String[] icons = {"⛀", "⛁", "⛂", "⛃"};
+    if (isKing) {
+      index += 1;
+    }
+    return icons[index];
   }
 
   // valid move directions (1 is up)
