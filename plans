@@ -1,0 +1,20 @@
+v2
+Controller:
+- updateUI on load
+- moves is an instance variable
+
+updateUI:
+- update board
+- update player label
+- get and display moves available
+  - if no moves available, calls handleVictor(player)
+
+handleInput:
+- get and validate the input
+- maps it to a move in the move array
+- uses processmove
+- calls updateUI
+
+handleVictor:
+- something that shows a victor and blocks new changes
+

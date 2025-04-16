@@ -6,10 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class CheckersApplication extends Application {
+public class Launcher extends Application {
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Checkersv3.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("checkers.fxml"));
 
         Scene scene = new Scene(root);
         stage.setTitle("Checkers");
