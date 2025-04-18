@@ -1,5 +1,4 @@
 package checkers;
-// stores information relating to a possible move in the game
 
 public class Move {
 

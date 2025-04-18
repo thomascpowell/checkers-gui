@@ -50,7 +50,7 @@
             </AnchorPane>
          </children>
       </HBox>
-      <Label fx:id="WinnerLabel" prefHeight="400.0" prefWidth="248.0" style="-fx-scale-z: 100; -fx-alignment: center;" textAlignment="CENTER" visible="false">
+      <Label fx:id="VictorLabel" prefHeight="400.0" prefWidth="248.0" style="-fx-scale-z: 100; -fx-alignment: center;" textAlignment="CENTER" visible="false">
          <font>
             <Font size="24.0" />
          </font></Label>

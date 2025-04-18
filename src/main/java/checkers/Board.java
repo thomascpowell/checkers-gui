@@ -1,5 +1,4 @@
 package checkers;
-
 import java.util.ArrayList;
 
 public class Board { 
@@ -10,9 +9,6 @@ public class Board {
     setup();
   }
 
-  // methods for accessing / mutating 
-  // (in cartesian)
-  // used outside this class
   public Piece get(int x, int y) {
     return grid[y][x];
   }
@@ -76,8 +72,6 @@ public class Board {
           Piece midPiece = grid[midY][midX];
           // and if theres an opposing piece there
           if (midPiece != null && midPiece.getPlayer() != grid[y][x].getPlayer()) {
-              // this constructor also has takeX and takeY
-              // these are filled by midX and midY
               // if the move is selected, the piece there will be deleted
               moves.add(new Move(x, y, newX, newY, midX, midY));
           }
@@ -89,9 +83,8 @@ public class Board {
       return x >= 0 && x < 8 && y >= 0 && y < 8;
   }
 
-  // prints the board
+  // returns the board
   public String show() {
-    // ANSI for clearing the terminal
     String res = "";
     for (int y = 7; y >= 0; y--) {
         res += String.format("%2d ", y + 1);
@@ -111,31 +104,30 @@ public class Board {
 
   // terrible.
   public void setup() {
-    grid[0][0] = new Piece(Player.RED);
-    grid[0][2] = new Piece(Player.RED);
-    grid[0][4] = new Piece(Player.RED);
-    grid[0][6] = new Piece(Player.RED);
-    grid[1][1] = new Piece(Player.RED);
-    grid[1][3] = new Piece(Player.RED);
-    grid[1][5] = new Piece(Player.RED);
-    grid[1][7] = new Piece(Player.RED);
-    grid[2][0] = new Piece(Player.RED);
-    grid[2][2] = new Piece(Player.RED);
-    grid[2][4] = new Piece(Player.RED);
-    grid[2][6] = new Piece(Player.RED);
-    grid[5][1] = new Piece(Player.BLUE);
-    grid[5][3] = new Piece(Player.BLUE);
-    grid[5][5] = new Piece(Player.BLUE);
-    grid[5][7] = new Piece(Player.BLUE);
-    grid[6][0] = new Piece(Player.BLUE);
-    grid[6][2] = new Piece(Player.BLUE);
-    grid[6][4] = new Piece(Player.BLUE);
-    grid[6][6] = new Piece(Player.BLUE);
-    grid[7][1] = new Piece(Player.BLUE);
-    grid[7][3] = new Piece(Player.BLUE);
-    grid[7][5] = new Piece(Player.BLUE);
-    grid[7][7] = new Piece(Player.BLUE);
-
+    grid[0][0] = new Piece(Player.WHITE);
+    grid[0][2] = new Piece(Player.WHITE);
+    grid[0][4] = new Piece(Player.WHITE);
+    grid[0][6] = new Piece(Player.WHITE);
+    grid[1][1] = new Piece(Player.WHITE);
+    grid[1][3] = new Piece(Player.WHITE);
+    grid[1][5] = new Piece(Player.WHITE);
+    grid[1][7] = new Piece(Player.WHITE);
+    grid[2][0] = new Piece(Player.WHITE);
+    grid[2][2] = new Piece(Player.WHITE);
+    grid[2][4] = new Piece(Player.WHITE);
+    grid[2][6] = new Piece(Player.WHITE);
+    grid[5][1] = new Piece(Player.BLACK);
+    grid[5][3] = new Piece(Player.BLACK);
+    grid[5][5] = new Piece(Player.BLACK);
+    grid[5][7] = new Piece(Player.BLACK);
+    grid[6][0] = new Piece(Player.BLACK);
+    grid[6][2] = new Piece(Player.BLACK);
+    grid[6][4] = new Piece(Player.BLACK);
+    grid[6][6] = new Piece(Player.BLACK);
+    grid[7][1] = new Piece(Player.BLACK);
+    grid[7][3] = new Piece(Player.BLACK);
+    grid[7][5] = new Piece(Player.BLACK);
+    grid[7][7] = new Piece(Player.BLACK);
   }
 
 }

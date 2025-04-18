@@ -11,7 +11,7 @@ public class Piece {
   }
 
   public String icon() {
-    int index = (player == Player.RED) ? 0 : 2;
+    int index = (player == Player.WHITE) ? 0 : 2;
     String[] icons = {"⛀", "⛁", "⛂", "⛃"};
     if (isKing) {
       index += 1;
@@ -24,7 +24,7 @@ public class Piece {
     if (this.isKing) {
       return new int[] {-1, 1};
     }
-    if (player == Player.RED) {
+    if (player == Player.WHITE) {
       return new int[] {1};
     }
     return new int[] {-1};

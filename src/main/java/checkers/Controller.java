@@ -11,7 +11,6 @@ public class Controller {
 
   private Board board;
   private Player turn;
-
   private ArrayList<Move> moves;
 
   // List of available moves
@@ -29,13 +28,15 @@ public class Controller {
   // Board Representation
   @FXML private Label BoardLabel;
 
+  // Left half of the screen
   @FXML private AnchorPane Left;
 
-  @FXML private Label WinnerLabel;
+  // Displays the victor
+  @FXML private Label VictorLabel;
 
   public Controller() {
     board = new Board();
-    turn = Player.BLUE;
+    turn = Player.BLACK;
     moves = new ArrayList<Move>();
   }
 
@@ -68,7 +69,7 @@ public class Controller {
     if (move.isTake()) {
         moves = board.getValidMoves(turn); 
         // in the case of a double jump, only take moves are permitted
-        // specifically take moves by the piece that made the original capture
+        // specifically, take moves by the piece that made the original capture
         ArrayList<Move> followUps = new ArrayList<>();
         for (Move m : moves) {
             if (m.getStartX() == move.getEndX() && m.getStartY() == move.getEndY() && m.isTake()) {
@@ -104,14 +105,14 @@ public class Controller {
   }
 
   private void toggleTurn() {
-    turn = (turn == Player.RED) ? Player.BLUE : Player.RED;
+    turn = (turn == Player.WHITE) ? Player.BLACK : Player.WHITE;
   }
 
-  @FXML
+  @FXML // displays the winner
   private void handleVictor(Player player) {
-    WinnerLabel.setText(player.toString() + " wins!");
+    VictorLabel.setText(player.toString() + " wins!");
     Left.setVisible(false);
-    WinnerLabel.setVisible(true);
+    VictorLabel.setVisible(true);
   }
 
   private String listMoves() {
@@ -122,6 +123,7 @@ public class Controller {
     return res;
   }
 
+  // modifies the board
   private void processMove(Move move) {
     Piece piece = board.get(move.getStartX(), move.getStartY());
     board.set(move.getStartX(), move.getStartY(), null);
@@ -129,7 +131,7 @@ public class Controller {
     if (move.isTake()) {
       board.set(move.getTakeX(), move.getTakeY(), null);
     }
-    int backRank = (piece.getPlayer() == Player.RED) ? 7 : 0;
+    int backRank = (piece.getPlayer() == Player.WHITE) ? 7 : 0;
     if (move.getEndY() == backRank) {
       piece.promote();
     }
