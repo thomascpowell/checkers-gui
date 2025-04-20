@@ -7,6 +7,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+/**
+ * @author Seth Nans, Gabriel Strickland, Thomas Powell, Sabella Malisher, Zachary McMillan
+ * Date: 4/21/2025
+ * Section: CSC 331
+ * Program Purpose: Controls the main game loop for a two-player checkers game.
+ * This class handles turns, determines available moves, processes player input, and tracks the winner.
+ */
+
 public class Controller {
 
   private Board board;
@@ -34,18 +42,28 @@ public class Controller {
   // Displays the victor
   @FXML private Label VictorLabel;
 
+
+  /**
+   * Constructs a new Controller.
+   */
   public Controller() {
     board = new Board();
     turn = Player.BLACK;
     moves = new ArrayList<Move>();
   }
 
+  /**
+   * Runs after the program starts, and updates UI elements.
+   * */
   @FXML
   private void initialize() {
       updateUI();
   }
 
-  // runs when the user submits a move
+  /**
+   * Runs when a move is selected by the user.
+   * Take the input, validates it, then updates state and UI.
+   */
   public void handleMove() {
     // read in a valid input
     int input;
@@ -85,7 +103,10 @@ public class Controller {
     updateUI();
   }
 
-  // updates the ui and moves list
+  /**
+   * Updates all UI elements.
+   * Ends the game when no valid moves are available.
+   * */
   public void updateUI() {
     // update the board display
     BoardLabel.setText(board.show());
@@ -104,17 +125,27 @@ public class Controller {
     MoveLabel.setText(turn.toString() + "'s Turn");
   }
 
+  /**
+   * Alternates between WHITE and BLACK.
+   * */
   private void toggleTurn() {
     turn = (turn == Player.WHITE) ? Player.BLACK : Player.WHITE;
   }
 
-  @FXML // displays the winner
+  /**
+   * Updates the UI to show the victor.
+   * */
+  @FXML
   private void handleVictor(Player player) {
     VictorLabel.setText(player.toString() + " wins!");
     Left.setVisible(false);
     VictorLabel.setVisible(true);
   }
 
+  /**
+   * Returns a formatted string listing all moves for the current player.
+   * @return Formatted string
+   * */
   private String listMoves() {
     String res = "";
     for (int i = 0; i < moves.size(); i++) {
@@ -123,7 +154,11 @@ public class Controller {
     return res;
   }
 
-  // modifies the board
+  /**
+   * Applies the selected move to the board. Moves the piece, removes captured
+   * pieces, and promotes to king if a piece reaches the back row.
+   * @param move The move to process
+   */
   private void processMove(Move move) {
     Piece piece = board.get(move.getStartX(), move.getStartY());
     board.set(move.getStartX(), move.getStartY(), null);

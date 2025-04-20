@@ -1,30 +1,59 @@
 package checkers;
 import java.util.ArrayList;
 
+/**
+ * @author Seth Nans, Gabriel Strickland, Thomas Powell, Sabella Malisher, Zachary McMillan
+ * Date: 4/21/2025
+ * Section: CSC 331
+ * Program Purpose: Represents the game board for the checkers game.
+ * Handles the setup of the board, move validation, and displays the board.
+ */
+
 public class Board { 
 
   Piece[][] grid = new Piece[8][8];
 
+  /**
+   * Constructs a Board object and sets up pieces.
+   */
   Board() {
     setup();
   }
 
+  /**
+   * Returns the piece at the specified coordinates.
+   * Used outside this class.
+   * @param x The x-coordinate
+   * @param y The y-coordinate
+   * @return The Piece at the location, or null if empty
+   */
   public Piece get(int x, int y) {
     return grid[y][x];
   }
 
+  /**
+   * Sets a piece at the specified coordinates.
+   * Used outside this class.
+   * @param x The x-coordinate
+   * @param y The y-coordinate
+   * @param piece The Piece to place
+   */
   public void set(int x, int y, Piece piece) {
     grid[y][x] = piece;
   }
 
-  // returns a list of valid moves
+  /**
+   * Returns a list of valid moves for the player.
+   * Takes into account movement and forced captures.
+   * @param player The player whose moves are to be retrieved
+   * @return List of valid move objects
+   */
   public ArrayList<Move> getValidMoves(Player player) {
     ArrayList<Move> res = new ArrayList<>(); 
     for (int y = 0; y < 8; y++) {
         for (int x = 0; x < 8; x++) {
             Piece piece = grid[y][x];
             if (piece != null && piece.getPlayer() == player) {
-                // Add valid moves for this piece
                 res.addAll(getPieceValidMoves(piece, x, y));
             }
         }
@@ -36,6 +65,13 @@ public class Board {
     return res;
   }
 
+  /**
+   * Returns all valid moves for a piece at a given location.
+   * @param piece The piece to check
+   * @param x The x-coordinate of the piece
+   * @param y The y-coordinate of the piece
+   * @return List of valid move objects
+   */
   private ArrayList<Move> getPieceValidMoves(Piece piece, int x, int y) {
       ArrayList<Move> moves = new ArrayList<>();
       int[] directions = piece.getDirections();
@@ -48,9 +84,15 @@ public class Board {
       return moves;
   }
 
+  /**
+   * Adds a non-capturing move to the list if valid.
+   * @param x The current x-position
+   * @param y The current y-position
+   * @param direction The vertical direction
+   * @param dx The horizontal direction
+   * @param moves List to append the move to
+   */
   private void addNormalMove(int x, int y, int direction, int dx, ArrayList<Move> moves) {
-      // dx = shift in x
-      // direction = forward / backwards
       int newX = x + dx;
       int newY = y + direction;
       // if move is in bounds and the square is open
@@ -60,6 +102,15 @@ public class Board {
       }
   }
 
+
+  /**
+   * Adds a jump (capturing) move to the list if valid.
+   * @param x The current x-position
+   * @param y The current y-position
+   * @param direction The vertical direction
+   * @param dx The horizontal direction
+   * @param moves List to append the move to
+   */
   private void addJumpMove(int x, int y, int direction, int dx, ArrayList<Move> moves) {
       // midX / midY are the square being skipped
       int newX = x + 2 * dx;
@@ -70,20 +121,28 @@ public class Board {
       // if in bounds and the square is open
       if (isInBounds(newX, newY) && grid[newY][newX] == null) {
           Piece midPiece = grid[midY][midX];
-          // and if theres an opposing piece there
+          // and if theres an opposing piece in betweeen
           if (midPiece != null && midPiece.getPlayer() != grid[y][x].getPlayer()) {
-              // if the move is selected, the piece there will be deleted
+              // if selected, the piece there will be deleted by processMove()
               moves.add(new Move(x, y, newX, newY, midX, midY));
           }
       }
   }
 
-  // checks if coordiates are on the board
+  /**
+   * Checks to see if given coordinates are within board bounds.
+   * @param x The x-coordinate
+   * @param y The y-coordinate
+   * @return True if coordinate is in bound, false otherwise
+   */
   private boolean isInBounds(int x, int y) {
       return x >= 0 && x < 8 && y >= 0 && y < 8;
   }
 
-  // returns the board
+  /**
+   * Returns a formatted string representation of the current board.
+   * @return A String that displays the board layout
+   */
   public String show() {
     String res = "";
     for (int y = 7; y >= 0; y--) {
@@ -102,7 +161,9 @@ public class Board {
     return res;
   }
 
-  // terrible.
+  /**
+   * Initializes the board with a default layout of WHITE and BLACK pieces.
+   */
   public void setup() {
     grid[0][0] = new Piece(Player.WHITE);
     grid[0][2] = new Piece(Player.WHITE);
@@ -129,5 +190,4 @@ public class Board {
     grid[7][5] = new Piece(Player.BLACK);
     grid[7][7] = new Piece(Player.BLACK);
   }
-
 }

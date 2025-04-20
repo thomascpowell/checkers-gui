@@ -6,7 +6,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * @author Seth Nans, Gabriel Strickland, Thomas Powell, Sabella Malisher, Zachary McMillan
+ * Date: 4/21/2025
+ * Section: CSC 331
+ * Program Purpose: Launch the program.
+ */
+
+
 public class Launcher extends Application {
+    /**
+     * Loads the FXML and sets the scene.
+     * */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("checkers.fxml"));
@@ -16,6 +27,9 @@ public class Launcher extends Application {
         stage.show();
     }
 
+    /**
+     * The entry point to the program.
+     * */
     public static void main(String[] args) {
         launch(args);
     }
