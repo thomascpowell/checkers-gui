@@ -23,7 +23,8 @@ public class Piece {
    */
   public String icon() {
     int index = (player == Player.WHITE) ? 0 : 2;
-    String[] icons = {"⛀", "⛁", "⛂", "⛃"};
+    // String[] icons = {"⛀", "⛁", "⛂", "⛃"};
+    String[] icons = {"o", "O", "x", "X"};
     if (isKing) {
       index += 1;
     }
