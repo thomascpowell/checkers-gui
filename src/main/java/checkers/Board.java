@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class Board { 
 
+  // Composition: Board has a grid of Pieces.
   Piece[][] grid = new Piece[8][8];
 
   /**

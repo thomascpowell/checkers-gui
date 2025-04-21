@@ -47,7 +47,6 @@ public class Move {
     this.takeY = takeY;
   }
 
-
   /**
    * Gets the starting x-coordinate.
    * @return the starting x-position
