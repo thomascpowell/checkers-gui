@@ -59,10 +59,32 @@ public class Board {
             }
         }
     }
-  // taking is forced
-  if (res.stream().anyMatch(m -> m.isTake())) {
-      res.removeIf(m -> !m.isTake());
+    return forceTaking(res);
   }
+
+  /**
+   * This function removes non-capture moves if a capture move
+   * is available.
+   * @param moves The current list of moves
+   * @return List of valid moves
+   */
+  public ArrayList<Move> forceTaking(ArrayList<Move> moves) {
+    boolean takeAvailable = false;
+    for (Move move : moves) {
+      if (move.isTake()) {
+        takeAvailable = true;
+        break;
+      }
+    }
+    if (!takeAvailable) {
+      return moves;
+    }
+    ArrayList<Move> res = new ArrayList<Move>();
+    for (Move move : moves) {
+      if (move.isTake()) {
+        res.add(move);
+      }
+    }
     return res;
   }
 
