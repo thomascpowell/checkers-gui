@@ -69,6 +69,7 @@ public class Controller {
     int input;
     try {
       input = Integer.parseInt(MoveInput.getText()) -1;
+      MoveInput.clear();
       if (input < 0 || input >= moves.size()) {
         throw new Exception();
       }
@@ -81,6 +82,7 @@ public class Controller {
     }
     // match it to a move in the list
     Move move = moves.get(input);
+
     // modify the board
     processMove(move);
     // handle the case of a double jump
