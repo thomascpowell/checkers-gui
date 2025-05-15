@@ -1,7 +1,8 @@
 Java checkers game with GUI.
 
+Run:
 ```
 mvn clean javafx:run
 ```
 
-Requires: JavaFX, JDK 23
+Requires: Maven, JavaFX, JDK 23
