@@ -1,8 +1,8 @@
-Java checkers game with GUI.
+## A simple JFX checkers game.
 
-Run:
+### Usage:
+- Requires `Maven`, `JavaFX`, and `JDK 23`
+- Clone the repo, then run:
 ```
 mvn clean javafx:run
 ```
-
-Requires: Maven, JavaFX, JDK 23
